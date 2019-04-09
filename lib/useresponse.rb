@@ -42,14 +42,14 @@ module Useresponse
 
     def encrypt(string, key)
       key = Digest::SHA1.hexdigest(key)
-      string = string.to_s
+      string = string.to_s.bytes
       string_length = string.length
       key_length = key.length
       j = 0
       hash = ''
 
       string_length.times do |i|
-        string_ord = string[i].ord
+        string_ord = string[i]
         j = 0 if j == key_length
         key_ord = key[j].ord
         j += 1
