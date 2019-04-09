@@ -68,8 +68,9 @@ module Useresponse
         data[:source]
       ]
       hashable = hashable.join(key)
+      hashable = hashable.bytes.reverse.map(&:chr).join # PHP strrev function
 
-      Digest::SHA1.hexdigest(hashable.reverse)
+      Digest::SHA1.hexdigest(hashable)
     end
   end
 end
